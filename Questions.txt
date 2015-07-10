@@ -1,0 +1,84 @@
+      Programming Challenge
+ 
+ 
+ 
+ 
+Hi,
+ 
+Thanks for taking our code challenge.
+ 
+We have two programming questions below we would like you to code and send it across to us as part of the evaluation process.
+ 
+When you send us the code, please ensure it would compile and run error free. Also add instructions on how to run the program along with the sample input you tested your code with.
+ 
+Please send your code in a zip file along with your updated CV to gjanakiraman@antal.com
+ 
+We will reach you and will share the details of the interesting opportunities we have in Chennai.
+ 
+Thanks.
+ 
+Instructions:
+ 
+Few things to watch out for when you write code.
+ 
+●      Choose any programming language you are comfortable with.
+ 
+●      Add comments in your code to help us understand while evaluating your solution.
+ 
+●      Ensure you write your code with several small functions that does a specific task. And call those functions in the code wherever needed.
+ 
+●      Do not use any standard library functions to split, sort, etc. Come up with your own code (function) to do them. For e.g.: power (a, b) will calculate value for ab and return.
+ 
+●      If you are writing in Java, you should deal with the strings as character array as you would when writing in C.
+
+ 
+ 
+Reverse the odd words
+ 
+Consider a character array consisting of letters, a space, and a period. Words consist of one or more, but at most 15 letters.
+ 
+An input text consists of one or more words separated from each other by one or more spaces and terminated more spaces followed by a point. Input should be read from, and including, the first letter of the first word, up to and including the terminating point.
+ 
+The output text is to be produced such that successive words are separated by a single space with the last word being terminated by a single point. Odd words are copied in reverse order while even words are kept as it is.
+ 
+For example, the input string
+ 
+: get busy living or get busy dying.
+ 
+becomes
+ 
+: get ysub living ro get ysub dying.
+
+ 
+ 
+Transform the integer array:
+ 
+Given an array of integers, write a program to output an another integer array of equal length such that the element at index 'i' in the output array is the sum of all elements in the input array except for the element at 'i'.
+ 
+In other words, let inputArray by an integer array of length 'n'. The solution, computed into outputArray, would be:
+ 
+for each j from 1 to n­2:
+ 
+outputArr[ j ] = inputArray[0] + inputArray[1] + inputArray[2] + ... + inputArray[j­1] + inputArray[j+1] + inputArray[j+2] +...+ inputArray[n­1]
+ 
+for j = 0:
+ 
+outputArray[0] = inputArray[1] + outputArray[2] + ... + outputArray[n­1]
+ 
+for j = n­1
+ 
+outputArray[n­1] = outputArray[0] + outputArray[1] + outputArray[2] + ... + outputArray[n­2]
+ 
+For example, the inputArray: { 1, 2, 3, 4 }
+ 
+returns outputArray: { 9, 8, 7, 6 }
+which is nothing but { 2+3+4, 1+3+4, 1+2+4, 1+2+3 }.
+ 
+Notes:
+ 
+The input array size will always have at least two elements in it, that is, n >= 2.
+ 
+You could treat all the numbers as integers
+ 
+The maximum length of input array is 100.
+
