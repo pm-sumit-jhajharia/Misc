@@ -4,88 +4,94 @@
 <meta charset="UTF-8">
 <title>Catalog Search Page</title>
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
-	$(document)
-			.ready(
-					function() {
-						$('form')
-						.submit(
-								function(event) {
-									var searchText = document
-											.getElementById('searchText').value;
-									var filterType = document
-											.getElementById('filterType').value;
-									if (searchText == null
-											|| searchText.length == 0) {
-										alert('Please enter seach text.');
-										return false;
-									}
-									var url = "http://localhost/xampp/testphp/abcd.php?filterValue="+searchText+"&filterType="+filterType;
-									$
-											.ajax(
-													{
-														type : 'GET',
-														url : url,
-														contentType: 'text/plain',
-														dataType: 'jsonp'
-													})
-											.done(
-													function(data) {
-														alert(data);
-														display(data);
-													});
-									event.preventDefault();
-								});
-						
-					});
-	
-	function display(data){
-		var htmlContent = "";
-		if (data.length > 0) {
-			htmlContent += "<table align='center' border='1' style='margin-top: 20px'><tr><th>CatalogId</th><th>CatalogName</th><th>CatalogDesc</th><th>CatalogPrice</th></tr>";
-			for (var i = 0; i < data.length; i++) {
-				htmlContent += "<tr><td>"
-						+ data[i].catalogId
-						+ "</td><td>"
-						+ data[i].catalogName
-						+ "</td><td>"
-						+ data[i].catalogDesc
-						+ "</td><td>"
-						+ data[i].price
-						+ "</td></tr>";
-			}
-			htmlContent += "</table>";
-			document
-					.getElementById('renderSearch').innerHTML = htmlContent;
-		} else {
-			document
-					.getElementById('renderSearch').innerHTML = '<span style="color: red">No Data Found<span>';
-		}
-	}
+        $(document)
+                        .ready(
+                                        function() {
+                                                $('form')
+                                                .submit(
+                                                                function(event) {
+                                                                        var searchText = document
+                                                                                        .getElementById('searchText').value;
+                                                                        var filterType = document
+                                                                                        .getElementById('filterType').value;
+                                                                        if (searchText == null
+                                                                                        || searchText.length == 0) {
+                                                                                alert('Please enter seach text.');
+                                                                                return false;
+                                                                        }
+                                                                        var url = "http://localhost/abcd.php?filterValue="+searchText+"&filterType="+filterType;
+                                                                        var result={};
+                                                                        $.ajax(
+                                                                                                        {
+                                                                                                                type : 'GET',
+                                                                                                                url : url,
+                                                                                                                async:false,
+                                                                                                                dataType:'json'
+                                                                                                        })
+                                                                                        .success(
+                                                                                                        function(data) {
+                                                                                                                result=data;
+                                                                                                                console.log(result);            
+                                                                                                                //alert(result);
+                                                                                                                display(result);
+                                                                                                        });
+                                                                        event.preventDefault();
+                                                                });
+                                                
+                                        });
+        
+        function display(data){
+                var htmlContent = "";
+                var checkData=""+data+"";
+                if (checkData.length > 0) {
+                        htmlContent += "<table align='center' border='1' style='margin-top: 20px'><tr><th>CatalogId</th><th>CatalogName</th><th>CatalogDesc</th><th>CatalogPrice</th></tr>";
+                        for (var i = 0; i < data.rows.length; i++) {
+                                htmlContent += "<tr><td>"
+                                                + data.rows[i].caseId
+                                                + "</td><td>"
+                                                + data.rows[i].email
+                                                + "</td><td>"
+                                                + data.rows[i].callerName
+                                                + "</td><td>"
+                                                + data.rows[i].details
+                                                + "</td></tr>";
+                        }
+                        htmlContent += "</table>";
+                        document
+                                        .getElementById('renderSearch').innerHTML = htmlContent;
+                } else {
+                        document
+                                        .getElementById('renderSearch').innerHTML = '<span style="color: red">No Data Found<span>';
+                }
+        }
 </script>
 </head>
 <body>
-	<h3 align="center">Search your catalog here...</h3>
-	<form method="post" action="" name="catalogForm">
-		<table align="center">
-			<thead>
-				<th></th>
-			</thead>
-			<tr>
-				<td style="font-weight: bold;">Search :</td>
-				<td style="font-weight: bold;">
-					<select id="filterType">
-						<option value="mobile">Mobile</option>
-						<option value="email">Email</option>
-						<option value="caseId">Case Id</option>
-					</select>
-				</td>
-				<td><input type="text" name="searchText" id="searchText" /></td>
-				<td><input type="submit" value="Search" /></td>
-			</tr>
-		</table>
-	</form>
-	<div align="center" id="renderSearch"></div>
+        <h3 align="center">Search your catalog here...</h3>
+        <form method="post" action="" name="catalogForm">
+                <table align="center">
+                        <thead>
+                                <th></th>
+                        </thead>
+                        <tr>
+                                <td style="font-weight: bold;">Search :</td>
+                                <td style="font-weight: bold;">
+                                        <select id="filterType">
+                                                <option value="mobile">Mobile</option>
+                                                <option value="email">Email</option>
+                                                <option value="caseId">Case Id</option>
+                                        </select>
+                                </td>
+                                <td><input type="text" name="searchText" id="searchText" /></td>
+                                <td><input type="submit" value="Search" /></td>
+                        </tr>
+                </table>
+        </form>
+        <div align="center" id="renderSearch"></div>
 </body>
 </html>
+
+~                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+~                       
